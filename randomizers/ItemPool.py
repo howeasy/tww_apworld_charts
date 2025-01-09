@@ -145,7 +145,8 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
             num_items_left_to_place += 1
             pool.remove("Progressive Sword")
 
-    if world.options.better_filler:
+
+    if world.options.better_filler != "standard_filler":
         better_filler_items = ["Blue Chu Jelly",
                               "Skull Necklace",
                               "Boko Baba Seed",
@@ -165,10 +166,12 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
                               "5 Bombs (Pickup)",
                               "Small Magic Jar (Pickup)",
                               "Large Magic Jar (Pickup)",
-                              "Heart (Pickup)",]
+                              "Heart (Pickup)",
+                              "Three Hearts (Pickup)",]
         
-        # If the player starts with treasure charts removed, remove them from the pool
-        if not world.options.progression_treasure_charts and world.options.remove_treasure_charts:
+        better_filler_count = 0
+
+        if not world.options.progression_treasure_charts and (world.options.better_filler == "remove_treasure_charts" or world.options.better_filler == "remove_both_charts"):
             filler_pool.remove("Treasure Chart 1")
             filler_pool.remove("Treasure Chart 2")
             filler_pool.remove("Treasure Chart 3")
@@ -211,8 +214,9 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
             filler_pool.remove("Treasure Chart 40")
             filler_pool.remove("Treasure Chart 41")
 
-        # If the player starts with triforce charts removed, remove them from the pool
-        if not world.options.progression_triforce_charts and world.options.remove_triforce_charts:
+            better_filler_count += 41
+
+        if not world.options.progression_triforce_charts and (world.options.better_filler == "remove_triforce_charts" or world.options.better_filler == "remove_both_charts"):
             filler_pool.remove("Triforce Chart 1")
             filler_pool.remove("Triforce Chart 2")
             filler_pool.remove("Triforce Chart 3")
@@ -222,7 +226,9 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
             filler_pool.remove("Triforce Chart 7")
             filler_pool.remove("Triforce Chart 8")
 
-        better_filler_list = random.choices(better_filler_items,k=49)
+            better_filler_count += 8
+
+        better_filler_list = random.choices(better_filler_items,k=better_filler_count)
         for item in better_filler_list:
             filler_pool.append(item)
 

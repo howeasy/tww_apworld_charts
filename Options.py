@@ -683,34 +683,25 @@ class RemoveMusic(Toggle):
 
     display_name = "Remove Music"
 
-class BetterFiller(Toggle):
+class BetterFiller(Choice):
     """
-    Adds an additional 49 filler items to the item pool.
+    Modifies filler pool for diversity. This can include spoils, rupees, and item pickups.
 
-    This includes rupees, spoils, and item pickups.
+    Standard Filler: Standard Wind Waker filler pool
+
+    Remove Treasure Charts: Removes treasure charts from the filler pool (must be non-progression) and replaces with more varied filler items.
+
+    Remove Triforce Charts: Removes triforce charts from the filler pool (must be non-progression) and replaces with more varied filler items.
+
+    Remove Both Charts: Removes both treasure and triforce charts from the filler pool (must be non-progression) and replaces with more varied filler items.
     """
 
     display_name = "Better Filler"
-
-class RemoveTreasureCharts(Toggle):
-    """
-    Removes Treasure Charts from the item pool. 
-
-    Better Filler must be enabled.
-    Progression Treasure Charts must be disabled.
-    """
-
-    display_name = "Remove Treasure Charts"
-
-class RemoveTriforceCharts(Toggle):
-    """
-    Removes Triforce Charts from the item pool. 
-
-    Better Filler must be enabled.
-    Progression Triforce Charts must be disabled.
-    """
-
-    display_name = "Remove Triforce Charts"
+    option_standard_filler = 0
+    option_remove_treasure_charts = 1
+    option_remove_triforce_charts = 2
+    option_remove_both_charts = 3
+    default = 0
 
 @dataclass
 class TWWOptions(PerGameCommonOptions):
@@ -781,10 +772,8 @@ class TWWOptions(PerGameCommonOptions):
     add_shortcut_warps_between_dungeons: AddShortcutWarpsBetweenDungeons
     skip_rematch_bosses: SkipRematchBosses
     remove_music: RemoveMusic
-    death_link: DeathLink
     better_filler: BetterFiller
-    remove_treasure_charts: RemoveTreasureCharts
-    remove_triforce_charts: RemoveTriforceCharts
+    death_link: DeathLink
 
 tww_option_groups: list[OptionGroup] = [
     OptionGroup(
@@ -856,8 +845,6 @@ tww_option_groups: list[OptionGroup] = [
             AddShortcutWarpsBetweenDungeons,
             RemoveMusic,
             BetterFiller,
-            RemoveTreasureCharts,
-            RemoveTriforceCharts,
         ],
     ),
     OptionGroup(
