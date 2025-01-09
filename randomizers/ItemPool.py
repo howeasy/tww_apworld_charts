@@ -165,8 +165,7 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
                               "5 Bombs (Pickup)",
                               "Small Magic Jar (Pickup)",
                               "Large Magic Jar (Pickup)",
-                              "Heart (Pickup)",
-                              "Fairy (Pickup)",]
+                              "Heart (Pickup)",]
         
         # If the player starts with treasure charts removed, remove them from the pool
         if not world.options.progression_treasure_charts and world.options.remove_treasure_charts:

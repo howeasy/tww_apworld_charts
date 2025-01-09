@@ -272,7 +272,6 @@ ITEM_TABLE: dict[str, TWWItemData] = {
     "Small Magic Jar (Pickup)":TWWItemData("Item",      IC.filler,                     157,  0, 0x09),
     "Large Magic Jar (Pickup)":TWWItemData("Item",      IC.filler,                     158,  0, 0x0A),
     "Heart (Pickup)":          TWWItemData("Item",      IC.filler,                     159,  0, 0x00),
-    "Fairy (Pickup)":          TWWItemData("Item",      IC.filler,                     160,  0, 0x16),
 
     "Victory":                 TWWItemData("Event",     IC.progression,               None,  1, None),
 }
