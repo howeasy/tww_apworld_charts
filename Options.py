@@ -683,6 +683,34 @@ class RemoveMusic(Toggle):
 
     display_name = "Remove Music"
 
+class BetterFiller(Toggle):
+    """
+    Adds an additional 49 filler items to the item pool.
+
+    This includes rupees, spoils, and item pickups.
+    """
+
+    display_name = "Better Filler"
+
+class RemoveTreasureCharts(Toggle):
+    """
+    Removes Treasure Charts from the item pool. 
+
+    Better Filler must be enabled.
+    Progression Treasure Charts must be disabled.
+    """
+
+    display_name = "Remove Treasure Charts"
+
+class RemoveTriforceCharts(Toggle):
+    """
+    Removes Triforce Charts from the item pool. 
+
+    Better Filler must be enabled.
+    Progression Triforce Charts must be disabled.
+    """
+
+    display_name = "Remove Triforce Charts"
 
 @dataclass
 class TWWOptions(PerGameCommonOptions):
@@ -754,7 +782,9 @@ class TWWOptions(PerGameCommonOptions):
     skip_rematch_bosses: SkipRematchBosses
     remove_music: RemoveMusic
     death_link: DeathLink
-
+    better_filler: BetterFiller
+    remove_treasure_charts: RemoveTreasureCharts
+    remove_triforce_charts: RemoveTriforceCharts
 
 tww_option_groups: list[OptionGroup] = [
     OptionGroup(
@@ -825,6 +855,9 @@ tww_option_groups: list[OptionGroup] = [
             SkipRematchBosses,
             AddShortcutWarpsBetweenDungeons,
             RemoveMusic,
+            BetterFiller,
+            RemoveTreasureCharts,
+            RemoveTriforceCharts,
         ],
     ),
     OptionGroup(

@@ -10,6 +10,8 @@ from .Dungeons import get_dungeon_item_pool_player
 if TYPE_CHECKING:
     from .. import TWWWorld
 
+import random
+
 VANILLA_DUNGEON_ITEM_LOCATIONS: dict[str, list[str]] = {
     "DRC Small Key": [
         "Dragon Roost Cavern - First Room",
@@ -142,6 +144,88 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
         while "Progressive Sword" in pool:
             num_items_left_to_place += 1
             pool.remove("Progressive Sword")
+
+    if world.options.better_filler:
+        better_filler_items = ["Blue Chu Jelly",
+                              "Skull Necklace",
+                              "Boko Baba Seed",
+                              "Golden Feather",
+                              "Knight's Crest",
+                              "Red Chu Jelly",
+                              "Green Chu Jelly",
+                              "Joy Pendant",
+                              "All-Purpose Bait",
+                              "Hyoi Pear",
+                              "Green Rupee",
+                              "Blue Rupee",
+                              "Yellow Rupee",
+                              "Red Rupee",
+                              "Purple Rupee",
+                              "10 Arrows (Pickup)",
+                              "5 Bombs (Pickup)",
+                              "Small Magic Jar (Pickup)",
+                              "Large Magic Jar (Pickup)",
+                              "Heart (Pickup)",
+                              "Fairy (Pickup)",]
+        
+        # If the player starts with treasure charts removed, remove them from the pool
+        if not world.options.progression_treasure_charts and world.options.remove_treasure_charts:
+            filler_pool.remove("Treasure Chart 1")
+            filler_pool.remove("Treasure Chart 2")
+            filler_pool.remove("Treasure Chart 3")
+            filler_pool.remove("Treasure Chart 4")
+            filler_pool.remove("Treasure Chart 5")
+            filler_pool.remove("Treasure Chart 6")
+            filler_pool.remove("Treasure Chart 7")
+            filler_pool.remove("Treasure Chart 8")
+            filler_pool.remove("Treasure Chart 9")
+            filler_pool.remove("Treasure Chart 10")
+            filler_pool.remove("Treasure Chart 11")
+            filler_pool.remove("Treasure Chart 12")
+            filler_pool.remove("Treasure Chart 13")
+            filler_pool.remove("Treasure Chart 14")
+            filler_pool.remove("Treasure Chart 15")
+            filler_pool.remove("Treasure Chart 16")
+            filler_pool.remove("Treasure Chart 17")
+            filler_pool.remove("Treasure Chart 18")
+            filler_pool.remove("Treasure Chart 19")
+            filler_pool.remove("Treasure Chart 20")
+            filler_pool.remove("Treasure Chart 21")
+            filler_pool.remove("Treasure Chart 22")
+            filler_pool.remove("Treasure Chart 23")
+            filler_pool.remove("Treasure Chart 24")
+            filler_pool.remove("Treasure Chart 25")
+            filler_pool.remove("Treasure Chart 26")
+            filler_pool.remove("Treasure Chart 27")
+            filler_pool.remove("Treasure Chart 28")
+            filler_pool.remove("Treasure Chart 29")
+            filler_pool.remove("Treasure Chart 30")
+            filler_pool.remove("Treasure Chart 31")
+            filler_pool.remove("Treasure Chart 32")
+            filler_pool.remove("Treasure Chart 33")
+            filler_pool.remove("Treasure Chart 34")
+            filler_pool.remove("Treasure Chart 35")
+            filler_pool.remove("Treasure Chart 36")
+            filler_pool.remove("Treasure Chart 37")
+            filler_pool.remove("Treasure Chart 38")
+            filler_pool.remove("Treasure Chart 39")
+            filler_pool.remove("Treasure Chart 40")
+            filler_pool.remove("Treasure Chart 41")
+
+        # If the player starts with triforce charts removed, remove them from the pool
+        if not world.options.progression_triforce_charts and world.options.remove_triforce_charts:
+            filler_pool.remove("Triforce Chart 1")
+            filler_pool.remove("Triforce Chart 2")
+            filler_pool.remove("Triforce Chart 3")
+            filler_pool.remove("Triforce Chart 4")
+            filler_pool.remove("Triforce Chart 5")
+            filler_pool.remove("Triforce Chart 6")
+            filler_pool.remove("Triforce Chart 7")
+            filler_pool.remove("Triforce Chart 8")
+
+        better_filler_list = random.choices(better_filler_items,k=49)
+        for item in better_filler_list:
+            filler_pool.append(item)
 
     # Place useful items, then filler items to fill out the remaining locations.
     pool.extend([world.get_filler_item_name() for _ in range(num_items_left_to_place)])
