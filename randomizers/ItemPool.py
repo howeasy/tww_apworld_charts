@@ -147,8 +147,7 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
 
 
     if world.options.better_filler != "standard_filler":
-        better_filler_items = ["Blue Chu Jelly",
-                              "Skull Necklace",
+        better_filler_items = ["Skull Necklace",
                               "Boko Baba Seed",
                               "Golden Feather",
                               "Knight's Crest",
@@ -163,7 +162,9 @@ def get_pool_core(world: "TWWWorld") -> tuple[list[str], list[str]]:
                               "Red Rupee",
                               "Purple Rupee",
                               "10 Arrows (Pickup)",
+                              "20 Arrows (Pickup)",
                               "5 Bombs (Pickup)",
+                              "10 Bombs (Pickup)",
                               "Small Magic Jar (Pickup)",
                               "Large Magic Jar (Pickup)",
                               "Heart (Pickup)",

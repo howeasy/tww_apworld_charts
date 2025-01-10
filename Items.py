@@ -266,13 +266,14 @@ ITEM_TABLE: dict[str, TWWItemData] = {
     "WT Dungeon Map":          TWWItemData("Map",       IC.filler,                     152,  1, 0x84),
     "WT Compass":              TWWItemData("Compass",   IC.filler,                     153,  1, 0x85),
 
-    "Blue Chu Jelly":          TWWItemData("Item",      IC.filler,                     154,  0, 0x4B),
-    "10 Arrows (Pickup)":      TWWItemData("Item",      IC.filler,                     155,  0, 0x10),
+    "10 Arrows (Pickup)":      TWWItemData("Item",      IC.filler,                     154,  0, 0x10),
+    "20 Arrows (Pickup)":      TWWItemData("Item",      IC.filler,                     155,  0, 0x11),
     "5 Bombs (Pickup)":        TWWItemData("Item",      IC.filler,                     156,  0, 0x0B),
-    "Small Magic Jar (Pickup)":TWWItemData("Item",      IC.filler,                     157,  0, 0x09),
-    "Large Magic Jar (Pickup)":TWWItemData("Item",      IC.filler,                     158,  0, 0x0A),
-    "Heart (Pickup)":          TWWItemData("Item",      IC.filler,                     159,  0, 0x00),
-    "Three Hearts (Pickup)":   TWWItemData("Item",      IC.filler,                     160,  0, 0x1E),
+    "10 Bombs (Pickup)":       TWWItemData("Item",      IC.filler,                     157,  0, 0x0C),
+    "Small Magic Jar (Pickup)":TWWItemData("Item",      IC.filler,                     158,  0, 0x09),
+    "Large Magic Jar (Pickup)":TWWItemData("Item",      IC.filler,                     159,  0, 0x0A),
+    "Heart (Pickup)":          TWWItemData("Item",      IC.filler,                     160,  0, 0x00),
+    "Three Hearts (Pickup)":   TWWItemData("Item",      IC.filler,                     161,  0, 0x1E),
 
     "Victory":                 TWWItemData("Event",     IC.progression,               None,  1, None),
 }
