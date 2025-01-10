@@ -270,8 +270,7 @@ class TWWWorld(World):
         self.create_dungeons()
 
         # Assign each location to their region.
-        # Progress locations are sorted for deterministic results.
-        for location_name in sorted(self.progress_locations):
+        for location_name in self.progress_locations:
             data = LOCATION_TABLE[location_name]
 
             region = self.get_region(data.region)
@@ -316,7 +315,7 @@ class TWWWorld(World):
 
             for i in range(len(rock_spire_shop_ship_locations)):
                 curr_loc = rock_spire_shop_ship_locations[i]
-                other_locs = rock_spire_shop_ship_locations[:i] + rock_spire_shop_ship_locations[i + 1:]
+                other_locs = rock_spire_shop_ship_locations[:i] + rock_spire_shop_ship_locations[i + 1 :]
 
                 add_item_rule(
                     curr_loc,
@@ -475,6 +474,8 @@ class TWWWorld(World):
             adjusted_classification = IC.filler
         if not self.options.progression_misc and name.endswith("Tingle Statue"):
             adjusted_classification = IC.filler
+        if not self.options.better_filler == "standard_filler" and name == "Piece of Heart":
+            adjusted_classification = IC.useful
 
         return adjusted_classification
 
@@ -595,6 +596,7 @@ class TWWWorld(World):
             "add_shortcut_warps_between_dungeons": self.options.add_shortcut_warps_between_dungeons.value,
             "skip_rematch_bosses": self.options.skip_rematch_bosses.value,
             "remove_music": self.options.remove_music.value,
+            "better_filler": self.options.better_filler.value,
             "death_link": self.options.death_link.value,
         }
 
