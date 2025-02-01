@@ -1,4 +1,5 @@
 import os
+from base64 import b64encode
 from collections.abc import Mapping
 from dataclasses import fields
 from typing import Any, ClassVar
@@ -112,7 +113,7 @@ class TWWWorld(World):
     set_rules = set_rules
 
     def __init__(self, *args, **kwargs):
-        super(TWWWorld, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.progress_locations: set[str] = set()
         self.nonprogress_locations: set[str] = set()
@@ -407,8 +408,8 @@ class TWWWorld(World):
 
         # Output the plando details to file.
         file_path = os.path.join(output_directory, f"{multiworld.get_out_file_name_base(player)}.aptww")
-        with open(file_path, "w") as f:
-            f.write(yaml.dump(output_data, sort_keys=False))
+        with open(file_path, "wb") as f:
+            f.write(b64encode(bytes(yaml.safe_dump(output_data, sort_keys=False), "utf-8")))
 
     def extend_hint_information(self, hint_data: dict[int, dict[int, str]]) -> None:
         """
@@ -461,8 +462,7 @@ class TWWWorld(World):
         if not self.options.progression_short_sidequests and name in ("Maggie's Letter", "Moblin's Letter"):
             adjusted_classification = IC.filler
         if (
-            not self.options.progression_short_sidequests
-            and self.options.progression_long_sidequests
+            not (self.options.progression_short_sidequests or self.options.progression_long_sidequests)
             and name == "Progressive Picto Box"
         ):
             adjusted_classification = IC.filler
